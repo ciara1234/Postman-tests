@@ -1,0 +1,230 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Overdrive",
+		"_postman_id": "e4895440-a70f-90b3-ffcd-7a5b63397503",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Library Auth",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"showPassword": false
+					}
+				},
+				"url": "https://oauth.overdrive.com/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Library Account",
+			"request": {
+				"url": "https://api.overdrive.com/v1/libraries/4425",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent:",
+						"value": "CLL Browser",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"url": "https://api.overdrive.com/v1/collections/v1L1BBQ0AAA2_/products",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json; charset=utf-8",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "User-Agent:",
+						"value": "CLL Browser",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Patron Auth",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"showPassword": false
+					}
+				},
+				"url": "https://oauth-patron.overdrive.com/patrontoken",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": ".",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "[ignore]",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "websiteid: authorizationname:",
+							"type": "text"
+						},
+						{
+							"key": "password_required",
+							"value": "false",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Holds",
+			"request": {
+				"url": "https://patron.api.overdrive.com/v1/patrons/me/holds",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Place a hold",
+			"request": {
+				"url": "https://patron.api.overdrive.com/v1/patrons/me/holds",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fields\": [\n        {\n            \"name\": \"reserveId\",\n            \"value\": \"EBFF8D7B-DEAD-4478-A1ED-63B64E8386C5\"\n        },\n        {\n            \"name\": \"emailAddress\",\n            \"value\": \"1111@222.com\"\n        },\n        {\n            \"name\": \"ignoreHoldEmail \",\n            \"value\": \"true\"\n        },\n        {\n            \"name\": \"autoCheckout\",\n            \"value\": \"true\"\n        }\n    ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Hold",
+			"request": {
+				"url": "https://patron.api.overdrive.com/v1/patrons/me/holds/EBFF8D7B-C9A0-4478-A1ED-63B64E8386C5",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Metadata",
+			"request": {
+				"url": "https://api.overdrive.com/v1/collections/v1P1BBQ0AAA2N/products/EBFF8D7B-C9A0-4478-A1ED-63B64E8386C5/metadata",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get checkouts",
+			"request": {
+				"url": "https://patron.api.overdrive.com/v1/patrons/me/checkouts",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
